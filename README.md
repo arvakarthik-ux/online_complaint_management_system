@@ -1,4 +1,4 @@
-# Full Stack Complaint Management System
+# College Complaint Management System
 
 Flask + MySQL complaint management with user/admin portals, OTP email verification, file uploads, tracking page, and role-based access.
 
