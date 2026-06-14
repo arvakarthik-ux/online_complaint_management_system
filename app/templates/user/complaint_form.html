@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h4 class="mb-3">Submit Complaint</h4>
+        <form method="post" enctype="multipart/form-data">
+          {{ form.csrf_token }}
+          <div class="row">
+            <div class="col-md-6 mb-3">{{ form.category.label }} {{ form.category(class="form-select") }}</div>
+            <div class="col-md-6 mb-3">{{ form.priority.label }} {{ form.priority(class="form-select") }}</div>
+          </div>
+          <div class="mb-3">{{ form.title.label }} {{ form.title(class="form-control") }}</div>
+          <div class="mb-3">{{ form.description.label }} {{ form.description(class="form-control", rows=5) }}</div>
+          <div class="row">
+            <div class="col-md-6 mb-3">{{ form.incident_date.label }} {{ form.incident_date(class="form-control") }}</div>
+            <div class="col-md-6 mb-3">{{ form.incident_location.label }} {{ form.incident_location(class="form-control") }}</div>
+          </div>
+          <div class="mb-3">{{ form.attachments.label }} {{ form.attachments(class="form-control") }}</div>
+          <div class="mb-3">{{ form.additional_notes.label }} {{ form.additional_notes(class="form-control", rows=3) }}</div>
+          <div class="d-grid">{{ form.submit(class="btn btn-success") }}</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

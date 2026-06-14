@@ -1,0 +1,68 @@
+```html id="x4q9z1"
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h4 class="mb-3">
+                    Track Complaint
+                </h4>
+
+                <form method="POST">
+
+                    <input
+                        type="hidden"
+                        name="csrf_token"
+                        value="{{ csrf_token() }}"
+                    >
+
+                    <div class="mb-3">
+
+                        <label
+                            for="complaint_id"
+                            class="form-label"
+                        >
+                            Complaint ID
+                        </label>
+
+                        <input
+                            type="text"
+                            name="complaint_id"
+                            id="complaint_id"
+                            class="form-control"
+                            placeholder="e.g. CMP20260001"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="d-grid">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Track Complaint
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+```

@@ -1,0 +1,24 @@
+<form class="row g-2 mb-3" method="get">
+  <div class="col-md-3">
+    <input type="text" name="q" class="form-control" placeholder="Search ID or title" value="{{ request.args.get('q','') }}">
+  </div>
+  <div class="col-md-3">
+    <select name="status" class="form-select">
+      <option value="">All statuses</option>
+      {% for s in ["Submitted","Under Review","Investigation Started","Pending Documents","Resolved","Rejected"] %}
+      <option value="{{ s }}" {% if request.args.get('status') == s %}selected{% endif %}>{{ s }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-3">
+    <select name="category_id" class="form-select">
+      <option value="">All categories</option>
+      {% for cat in categories %}
+      <option value="{{ cat.id }}" {% if request.args.get('category_id')|int == cat.id %}selected{% endif %}>{{ cat.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-3 d-grid">
+    <button class="btn btn-primary">Apply</button>
+  </div>
+</form>

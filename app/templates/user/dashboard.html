@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Dashboard</h3>
+<div class="row mb-4">
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <h6>Total Complaints</h6>
+        <h3>{{ total }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <h6>Status Summary</h6>
+        <div class="d-flex flex-wrap gap-2">
+          {% for s, c in status_counts.items() %}
+          <span class="badge bg-secondary">{{ s }}: {{ c }}</span>
+          {% else %}
+          <span class="text-muted">No complaints yet.</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5 class="mb-3">Categories</h5>
+<div class="row g-3">
+  {% for cat in categories %}
+  <div class="col-6 col-md-3">
+    <a href="{{ url_for('user.complaint_new') }}" class="text-decoration-none">
+      <div class="card h-100 category-card border-0 shadow-sm">
+        <div class="card-body text-center">
+          <div class="fs-5 fw-semibold">{{ cat.name }}</div>
+          <div class="small text-muted">Create complaint</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="mt-4">
+  <a href="{{ url_for('user.my_complaints') }}" class="btn btn-outline-primary">View My Complaints</a>
+</div>
+{% endblock %}

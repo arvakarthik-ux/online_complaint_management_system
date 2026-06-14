@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Complaints</h3>
+{% include 'components/filters.html' %}
+<div class="card shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light"><tr><th>ID</th><th>Title</th><th>User</th><th>Category</th><th>Status</th><th>Submitted</th><th></th></tr></thead>
+      <tbody>
+        {% for c in complaints %}
+        <tr>
+          <td>{{ c.public_id }}</td>
+          <td>{{ c.title }}</td>
+          <td>{{ c.user.email }}</td>
+          <td>{{ c.category.name }}</td>
+          <td><span class="badge bg-info">{{ c.status }}</span></td>
+          <td>{{ c.submitted_at|dt }}</td>
+          <td><a class="btn btn-sm btn-outline-primary" href="{{ url_for('admin.complaint_detail', public_id=c.public_id) }}">Manage</a></td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" class="text-center text-muted py-4">No complaints.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% include 'components/pagination.html' with context %}
+</div>
+{% endblock %}

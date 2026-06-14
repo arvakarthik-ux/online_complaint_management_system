@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h4 class="mb-3">Tracking: {{ complaint.public_id }}</h4>
+<div class="card shadow-sm">
+  <div class="card-body">
+    <p><strong>Status:</strong> <span class="badge bg-info">{{ complaint.status }}</span></p>
+    <p><strong>Submitted:</strong> {{ complaint.submitted_at|dt }}</p>
+    <p><strong>Last Updated:</strong> {{ complaint.updated_at|dt }}</p>
+    <hr>
+    <h6>Admin Remarks / Progress</h6>
+    <ul class="list-group list-group-flush">
+      {% for u in complaint.updates|sort(attribute='created_at', reverse=True) %}
+      <li class="list-group-item d-flex justify-content-between">
+        <span><span class="badge bg-secondary me-2">{{ u.status }}</span> {{ u.remarks or '' }}</span>
+        <small class="text-muted">{{ u.created_at|dt }}</small>
+      </li>
+      {% else %}
+      <li class="list-group-item text-muted">No updates yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
