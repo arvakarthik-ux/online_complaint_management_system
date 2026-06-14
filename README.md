@@ -1,6 +1,6 @@
 # College Complaint Management System
 
-Flask + MySQL complaint management with user/admin portals, OTP email verification, file uploads, tracking page, and role-based access.
+A Flask-based complaint management system for colleges and institutions where students can raise complaints to respective departments such as Electrical, Transport, Anti-Ragging, Library, Women Safety, and Maintenance.
 
 ## Features
 - User registration with email OTP (5-minute expiry)
